@@ -18,6 +18,7 @@ $confirm_pass = "";
 $err_confirm_pass = "";
 $user_type = "";
 $err_user_type = "";
+$success = "";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -91,6 +92,7 @@ if ('registration' == $action) {
             $result = mysqli_query($connection, $query);
 
             if ($result) {
+                $success = "You have successfully registered. Now you can login !!!...";
                 header("location:login.php");
                 die();
             } else {

@@ -1,9 +1,9 @@
 <?php
  session_start();
- if(!empty($_SESSION['userLogin'])){
-     header("Location:login.php");
-     die();
- }
+ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: dashboard.php");
+    exit;
+}
     include 'login_core.php';
 ?>
 
@@ -39,7 +39,7 @@
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
 
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                     <div class="input-group mb-3">
                         <input type="email" class="form-control" name="email" value="<?php echo $email;?>" placeholder="Email">
                         <div class="input-group-append">
@@ -50,13 +50,17 @@
                         <span><?php echo $err_email; ?></span>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="pass" placeholder="Password">
+                        <input type="password" class="form-control" name="pass" placeholder="Password" id="myInput">
+                        
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
                         <span><?php echo $err_pass; ?></span>
+                    </div>
+                    <div class="input-group mb-3">
+                    <input type="checkbox" onclick="myFunction()">Show Password
                     </div>
                     <input type="hidden" name="action" value="login">
                     <?php if (isset($_REQUEST['error'])) {
@@ -87,6 +91,15 @@
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
+    <script>
+    function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}</script>
 
 </body>
 

@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["email"])) {
         $err_email = "Email Required";
     }elseif (strpos($_POST["email"], " ")) {
-        $err_email = "Username should not contain white space";
+        $err_email = "Email should not contain white space";
     } else {
         $email = $_POST["email"];
     }
@@ -40,14 +40,20 @@ if ( 'login' == $action ) {
         $query = "SELECT * FROM users WHERE email='{$email}'";
         $result = mysqli_query( $connection, $query );
         if ( $data = mysqli_fetch_assoc( $result ) ) {
-            $hash_passsword = $data['password'] ?? '';
-            
-            $_email = $data['email'] ?? '';
-            $_id = $data['id'] ?? '';
-            $_role = $data['user_type'] ?? '';
-            $_SESSION['userLogin'] = "Loggedin";
+            $hash_password = $data['password'] ?? '';
+            $user_hash_password = md5($password);
 
-            if ( password_verify($password, $hash_passsword) ) {
+            echo '$hash_password';
+            echo '$user_hash_password';
+
+
+            if($user_hash_password == $hash_password){
+                $_email = $data['email'] ?? '';
+                $_id = $data['id'] ?? '';
+                $_role = $data['user_type'] ?? '';
+                $_SESSION["loggedin"] = true;
+               
+
                 header( "location:dashboard.php" );
                 die();
             }
