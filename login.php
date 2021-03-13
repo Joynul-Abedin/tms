@@ -1,10 +1,10 @@
 <?php
- session_start();
- if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+session_start();
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     header("location: dashboard.php");
     exit;
 }
-    include 'login_core.php';
+include 'login_core.php';
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +41,7 @@
 
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" name="email" value="<?php echo $email;?>" placeholder="Email">
+                        <input type="email" class="form-control" name="email" value="<?php echo $email; ?>" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <input type="password" class="form-control" name="pass" placeholder="Password" id="myInput">
-                        
+
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -60,7 +60,7 @@
                         <span><?php echo $err_pass; ?></span>
                     </div>
                     <div class="input-group mb-3">
-                    <input type="checkbox" onclick="myFunction()">Show Password
+                        <input type="checkbox" onclick="myFunction()">Show Password
                     </div>
                     <input type="hidden" name="action" value="login">
                     <?php if (isset($_REQUEST['error'])) {
@@ -84,7 +84,11 @@
         </div>
     </div>
     <!-- /.login-box -->
+    <footer class="main-footer">
+        <p>Copyright &copy; 2021 BDTutor
 
+            | Design: <a rel="nofollow" href="https://www.facebook.com/profile.php?id=100008310437246" target="_blank">Arifur Rahman Ovi</a></p>
+    </footer>
     <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -92,14 +96,15 @@
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
     <script>
-    function myFunction() {
-  var x = document.getElementById("myInput");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
-}</script>
+        function myFunction() {
+            var x = document.getElementById("myInput");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 
 </body>
 

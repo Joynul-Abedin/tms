@@ -1,7 +1,7 @@
 <footer class="main-footer">
-<p>Copyright &copy; 2021 BDTutor
+    <p>Copyright &copy; 2021 BDTutor
 
-| Design: <a rel="nofollow" href="https://www.facebook.com/profile.php?id=100008310437246" target="_blank">Arifur Rahman Ovi</a></p>
+        | Design: <a rel="nofollow" href="https://www.facebook.com/profile.php?id=100008310437246" target="_blank">Arifur Rahman Ovi</a></p>
 </footer>
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
